@@ -1,6 +1,6 @@
 public class Calculator {
 
-    private static final String ARABIC_NUMERALS = "0123456789";
+    private static final String ARABIC_NUMERALS = "012345678910";
     private static final String ROMAN_NUMERALS = "IVXLCDM";
 
     public static int toArabic(String roman) {
