@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Calculator {
 
     private static final String ARABIC_NUMERALS = "012345678910";
@@ -86,7 +88,9 @@ public class Calculator {
         } else {
             throw new IllegalArgumentException("Используются одновременно разные системы счисления.");
         }
-
+        if ((isNum1Arabic && (num1 < 1 || num1 > 10) || (isNum2Arabic && (num2 < 1 || num2 > 10)))) {
+            throw new IllegalArgumentException("Введите числа от 1 до 10 ");
+        }
         int result = 0;
         switch (operator) {
             case "+" -> result = num1 + num2;
@@ -100,7 +104,14 @@ public class Calculator {
     }
 
     public static void main(String[] args) {
-        String input = "I - I";
-        System.out.println(calc(input));
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите данные: ");
+        String input = scanner.nextLine();
+        try {
+            String result = calc(input);
+            System.out.println("Результат: " + result);
+        } catch (IllegalArgumentException exception) {
+            System.out.println("Ошибка " + exception.getLocalizedMessage());
+        }
     }
 }
